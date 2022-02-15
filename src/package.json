@@ -1,0 +1,16 @@
+{
+  "name": "jsweather",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "aws-sdk": "2.814.0",
+    "jest": "25.4.0"
+  },
+  "dependencies": {
+    "axios": "0.24.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  }
+}

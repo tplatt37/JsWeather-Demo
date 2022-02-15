@@ -1,0 +1,30 @@
+
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - npm install
+  pre_build:
+    commands:
+      # Get the ARN of the secret
+      # We pass this into the cdk deploy command to keep the ARN out of the source code.
+      - SECRETARN=$(aws secretsmanager describe-secret --secret-id openweather-api-key | jq -r '.ARN')
+      - echo $SECRETARN 
+  build:
+    commands:
+      # This is the run build for the cdk program which also builds the layer and the lambda (see package.json for details)
+      - npm run build
+      # Run unit tests
+      - npm run test
+  post_build:
+    commands:
+      # This is a synth command - for no good reason ... just to show the CF Template.
+      - npm run -- cdk synth --app "npx ts-node bin/lambda.ts $SECRETARN" 
+      # Here's where we actually deploy it
+      - npm run -- cdk deploy --ci --require-approval never -a "npx ts-node bin/lambda.ts $SECRETARN"
+artifacts:
+  files:
+    - "cdk.out/**/*"

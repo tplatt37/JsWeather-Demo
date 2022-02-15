@@ -1,0 +1,43 @@
+{
+  "name": "js_weather_via_cdk",
+  "version": "0.1.0",
+  "bin": {
+    "js_weather_via_cdk": "bin/js_weather_via_cdk.js"
+  },
+  "scripts": {
+    "build": "tsc && npm run build-layer && npm run build-lambda",
+    "build-layer": "cd layer && npm --prefix ./nodejs install && cd ..",
+    "build-lambda": "cd src && npm run build",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "*",
+    "@aws-cdk/aws-apigateway": "*",
+    "@aws-cdk/aws-cloudformation": "*",
+    "@aws-cdk/aws-codebuild": "*",
+    "@aws-cdk/aws-codecommit": "*",
+    "@aws-cdk/aws-codepipeline": "*",
+    "@aws-cdk/aws-codepipeline-actions": "*",
+    "@aws-cdk/core": "*",
+    "@types/jest": "^26.0.10",
+    "@types/node": "^13.7.0",
+    "aws-cdk": "2.5.0",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.2.0",
+    "ts-node": "^9.0.0",
+    "typescript": "~3.9.7"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.5.0",
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.16"
+  },
+  "description": "description here!",
+  "main": "jest.config.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  }
+}
