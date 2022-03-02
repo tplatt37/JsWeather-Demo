@@ -8,6 +8,18 @@ Perhaps more importantly, this version uses CDKv2 to create the Lambda function,
 
 This lets us have a direct comparison of SAM versus CDKv2.
 
+# Architecture
+
+The following will be created:
+
+![Diagram - JsWeather architecture](/diagrams/aws-jsweather-demo-arch.png)
+
+
+A CI/CD Pipeline is created as well
+
+![Diagram - JsWeather CI/CD Pipeline](/diagrams/aws-jsweather-demo-pipeline.png)
+
+
 # Installation
 
 First, you must request an API Key from OpenWeatherMap.org, for the "Current Weather Data" API.
