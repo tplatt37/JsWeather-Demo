@@ -14,7 +14,7 @@ test('Lambda Function Created', () => {
    // Assertions
    template.resourceCountIs('AWS::Lambda::Function', 1);
    template.hasResourceProperties('AWS::Lambda::Function', {
-   MemorySize: 512,
+   MemorySize: 1792,
    Timeout: 30,
    Runtime: "nodejs18.x"
    });
