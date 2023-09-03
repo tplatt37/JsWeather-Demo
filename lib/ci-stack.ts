@@ -19,7 +19,7 @@ export class CIStack extends Stack {
 
         const repo = Repository.fromRepositoryName(
             this,
-            "JsWeatherViaCDK",
+            "JsWeather-Demo",
             props.repositoryName,
             
         )
