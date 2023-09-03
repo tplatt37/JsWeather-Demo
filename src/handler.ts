@@ -1,10 +1,13 @@
-const AWS = require('aws-sdk');
+//const AWS = require('aws-sdk');
+import { SecretsManagerClient, GetSecretValueCommand } from "@aws-sdk/client-secrets-manager";
 const axios = require('axios');
 
 // Create a Secrets Manager client
-var client = new AWS.SecretsManager();
+var client = new SecretsManagerClient();
+const input = {
+  SecretId: "openweather-api-key"
+}
 
-const secretName = "openweather-api-key"
 
 var secret;
 
@@ -13,10 +16,11 @@ exports.handler = async function(event: any, context: any) {
   
   console.log('JsWeather v2.1 #### city is:' + event.queryStringParameters["city"]);
 
-  secret = await client.getSecretValue({SecretId: secretName}).promise();
+  const command = new GetSecretValueCommand(input);
+  const secret = await client.send(command);
   
   // After this, api.apikey will be the Open Weather Map.org API key retrieved from Secrets Manager.
-  const api = JSON.parse(secret.SecretString);
+  const api = JSON.parse(secret.SecretString!);
   
   var response;
   const url = "https://api.openweathermap.org/data/2.5/weather?q="+ event.queryStringParameters["city"] +"&units=metric&appid=" + api.apikey;

@@ -29,7 +29,7 @@ export class CDKExampleLambdaApiStack extends Stack {
         this.layer = new LayerVersion(this, 'AxiosLayer', {
             code: new AssetCode(`./layer`),
             description: 'Axios for making get requests',
-            compatibleRuntimes: [Runtime.NODEJS_14_X],
+            compatibleRuntimes: [Runtime.NODEJS_18_X],
             removalPolicy: RemovalPolicy.DESTROY,
             compatibleArchitectures: [Architecture.X86_64, Architecture.ARM_64],
         });
@@ -41,9 +41,9 @@ export class CDKExampleLambdaApiStack extends Stack {
         this.lambdaFunction = new Function(this, props.functionName, {
             functionName: props.functionName,
             handler: "handler.handler",
-            runtime: Runtime.NODEJS_14_X,
+            runtime: Runtime.NODEJS_18_X,
             code: new AssetCode(`./src`),
-            memorySize: 512,
+            memorySize: 1792,
             timeout: Duration.seconds(30),
             layers: [this.layer],
             initialPolicy: [lambdaPolicy],

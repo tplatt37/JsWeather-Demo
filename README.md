@@ -38,25 +38,36 @@ We'll store the OpenWeatherMap API key in Secrets manager.
 
 First, you'll need to create the Secret (replace YOUR_API_KEY_HERE with yours!)
 
+```
 aws secretsmanager create-secret --name "openweather-api-key" --secret-string '{"apikey":"YOUR_API_KEY_HERE"}'
-
 SECRETARN=$(aws secretsmanager describe-secret --secret-id openweather-api-key | jq -r '.ARN')
-
 echo $SECRETARN
-
+```
 # Build and Run
 
 Run npm install first to install dependencies
 
+```
 npm install
+```
 
 Then run npm build 
 
+```
 npm run build
+```
+
+CDK "synthesizes" into good old CloudFormation. To see it run:
+```
+cdk synthesize --app "npx ts-node bin/lambda.ts $SECRETARN"
+```
+This only shows the CFN for the Lambda function itself.
 
 Then, you can deploy the Lambda function (bypassing the CI/CD Pipeline) by running this command:
 
+```
 cdk deploy --app "npx ts-node bin/lambda.ts $SECRETARN"
+```
 
 ## Create a CodeCommit repo
 
@@ -64,7 +75,9 @@ The CI/CD Pipeline assumes you are using CodeCommit.
 
 Follow these steps to create a repo
 
+```
 aws codecommit create-repository --repository-name "JsWeather-Demo"
+```
 
 Then, simply add that as a new remote , and push to it. 
 
@@ -74,13 +87,19 @@ This will create a CI/CD Pipeline that you can use for DevOps demos.
 
 This CI/CD Pipeline will peacefully co-exist with manually deploying as described above.
 
+```
 cdk deploy --force
+```
 
 NOTE: The pipeline assumes you are using AWS CodeCommit - NOT GITHUB!
 
 ## Uninstall
 
 Simply delete both Cloudformation stacks.
+
+```
+cdk destroy
+```
 
 Then, manually delete the SecretsManager secret.
 

@@ -10,6 +10,7 @@ console.log("Arguments...")
 console.log(process.argv)
 console.log(".")
 
+// TODO: Should this be the CDK context instead?
 if (process.argv.length < 3 ) {
     console.log("You must pass in the arn: for the secretsmanager secret.")
     process.exit(1)
