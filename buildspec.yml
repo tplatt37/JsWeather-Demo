@@ -7,6 +7,8 @@ phases:
       nodejs: 18
     commands:
       - npm install
+      # TODO: Figure out why we have to do this manual for the lambda src folder.
+      - cd src && npm install && cd ..
   pre_build:
     commands:
       # Get the ARN of the secret
