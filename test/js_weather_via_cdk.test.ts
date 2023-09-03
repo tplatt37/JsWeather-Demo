@@ -16,6 +16,6 @@ test('Lambda Function Created', () => {
    template.hasResourceProperties('AWS::Lambda::Function', {
    MemorySize: 512,
    Timeout: 30,
-   Runtime: "nodejs14.x"
+   Runtime: "nodejs18.x"
    });
 });
