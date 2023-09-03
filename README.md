@@ -85,7 +85,7 @@ Then, simply add that as a new remote , and push to it.
 
 This will create a CI/CD Pipeline that you can use for DevOps demos.
 
-This CI/CD Pipeline will peacefully co-exist with manually deploying as described above.
+This CI/CD Pipelinewill peacefully co-exist with manually deploying as described above.
 
 ```
 cdk deploy --force
@@ -107,6 +107,6 @@ Then, manually delete the SecretsManager secret.
 
 You need CDKv2
 
-You need NodeJS 14 
+You need NodeJS 18 
 
 You need jq installed

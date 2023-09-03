@@ -41,7 +41,7 @@ export class CIStack extends Stack {
     private createBuildStage(pipeline: Pipeline, sourceOutput: Artifact) {
         const project = new PipelineProject(this, `BuildProject`, {
             environment: {
-                buildImage: LinuxBuildImage.STANDARD_5_0,
+                buildImage: LinuxBuildImage.STANDARD_7_0,
             },
         })
 

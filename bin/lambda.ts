@@ -3,8 +3,8 @@ import "source-map-support/register"
 import cdk = require("aws-cdk-lib")
 import { CDKExampleLambdaApiStack } from "../lib/lambda-api-stack"
 
-export const lambdaApiStackName = "JsWeatherViaCDKLambdaStack"
-export const lambdaFunctionName = "JsWeatherViaCDK"
+export const lambdaApiStackName = "JsWeather-Demo-Lambda"
+export const lambdaFunctionName = "JsWeather-Demo"
 
 console.log("Arguments...")
 console.log(process.argv)
