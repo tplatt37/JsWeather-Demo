@@ -106,11 +106,13 @@ NOTE: The pipeline assumes you are using AWS CodeCommit - NOT GITHUB!
 ## Uninstall
 
 Simply delete both Cloudformation stacks:
+
 ```
-cdk destroy
+cdk destroy --app "npx ts-node bin/lambda.ts $SECRETARN" --force
+cdk destroy --app "npx ts-node bin/ci.ts $SECRETARN" --force
 ```
 
-Then, manually delete the SecretsManager secret.
+Then, manually delete the SecretsManager secret (if desired).
 
 ## Requirements
 
