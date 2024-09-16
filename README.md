@@ -69,6 +69,11 @@ Then, you can deploy the Lambda function (bypassing the CI/CD Pipeline) by runni
 cdk deploy --app "npx ts-node bin/lambda.ts $SECRETARN"
 ```
 
+NOTE: You can just run this shell script:
+```
+./install.sh
+```
+
 ## Create a CodeCommit repo
 
 The CI/CD Pipeline assumes you are using CodeCommit.
@@ -79,7 +84,12 @@ Follow these steps to create a repo
 aws codecommit create-repository --repository-name "JsWeather-Demo"
 ```
 
-Then, simply add that as a new remote , and push to it. 
+Then, simply add that as a new remote , and push to it:
+
+```
+git remote add cc URI
+git push cc
+```
 
 ## Install CI/CD Pipeline
 
@@ -95,8 +105,7 @@ NOTE: The pipeline assumes you are using AWS CodeCommit - NOT GITHUB!
 
 ## Uninstall
 
-Simply delete both Cloudformation stacks.
-
+Simply delete both Cloudformation stacks:
 ```
 cdk destroy
 ```
@@ -107,6 +116,6 @@ Then, manually delete the SecretsManager secret.
 
 You need CDKv2
 
-You need NodeJS 18 
+You need NodeJS 20 
 
 You need jq installed
