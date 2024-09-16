@@ -119,3 +119,7 @@ You need CDKv2 (2.158.0 or newer)
 You need NodeJS 20 
 
 You need jq installed
+
+## Notes on Lambda version upgrades
+
+To update the version of NodeJS, you must update the lambda-api-stack.ts, the test case (it asserts the NodeJS version), and possibly the dependencies in Package.json for the newer version.
