@@ -114,7 +114,7 @@ Then, manually delete the SecretsManager secret.
 
 ## Requirements
 
-You need CDKv2
+You need CDKv2 (2.158.0 or newer)
 
 You need NodeJS 20 
 
