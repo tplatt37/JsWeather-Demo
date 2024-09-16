@@ -114,6 +114,8 @@ cdk destroy --app "npx ts-node bin/ci.ts $SECRETARN" --force
 
 Then, manually delete the SecretsManager secret (if desired).
 
+Also remember to delete the CodeCommit repository, if you don't want to keep it.
+
 ## Requirements
 
 You need CDKv2 (2.158.0 or newer)
